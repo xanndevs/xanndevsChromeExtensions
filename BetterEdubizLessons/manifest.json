@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Better Edubiz Lessons",
+    "version": "0.2",
+    "description": "Makes overall edubiz lesson experience better",
+    "permissions": [
+        "activeTab"
+    ],
+    "action": {
+        "default_icon": "./icons/icon.png",
+        "default_popup": "index.html"
+    },
+    "background": {
+        "service_worker": "./js/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://atlas.edubiz.com.tr/Recording/*"
+            ],
+            "js": [
+                "./js/content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
