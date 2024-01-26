@@ -2,6 +2,31 @@ window.addEventListener('load', function () {
     // Your code to run when all assets are loaded
     console.log('All assets have been loaded');
     this.setTimeout(changeInnerHTML, 1000);
+    a = document.addEventListener('keydown', function (event) {
+        console.log(event);
+        yy = document.querySelectorAll(`[id^=${'videojs-player-'}]`)[1];
+        if (event.key == 'ArrowRight') {
+            yy.currentTime += 10;
+        }
+        if (event.key == 'ArrowLeft') {
+            yy.currentTime -= 5;
+        }
+        if (event.key == ' ') {
+            if (yy.paused) {
+                console.log(3);
+                yy.play();
+            } else {
+                console.log(2);
+                yy.pause();
+            }
+        }
+        if (event.key == 'm') {
+            console.log(1);
+            document
+                .getElementsByClassName('vjs-mute-control vjs-control')[0]
+                .click();
+        }
+    });
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
